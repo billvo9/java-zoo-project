@@ -30,4 +30,10 @@ public class Dolphin extends Animal {
     public void eatingCompleted() {
         System.out.println("Dolphin has finished eating.");
     }
+
+    // Implementing the method from the Swim interface
+    @Override
+    public void swimming(){
+        System.out.println("Dolphin is swimming at the speed of " + swimmingSpeed);
+    }
 }
