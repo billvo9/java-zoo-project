@@ -143,116 +143,84 @@ public class Main {
          **/
 
         do {
+                switch (animalChoiceMenu(keyboard)) {
+                    case 1:
+                        // Instantiate the Tiger outside the inner loop so it remembers its properties
+                        Tiger tiger = new Tiger();
+                        do {
+                            System.out.println("The animal which is chosen is : Tiger");
+                            // Use the provided helper method to show the details menu
+                            menuChoice = animalDetailsManipulationMenu(keyboard, tiger);
+                            
+                            switch (menuChoice) {
+                                case 1: // Set properties
+                                    System.out.print("Enter number of stripes: ");
+                                    tiger.setNumberOfStripes(keyboard.nextInt());
+                                    System.out.print("Enter walking speed: ");
+                                    tiger.setSpeed(keyboard.nextInt());
+                                    System.out.print("Enter roar sound level: ");
+                                    tiger.setSoundLevelOfRoar(keyboard.nextInt());
+                                    break;
+                                case 2: // Display properties
+                                    System.out.println("Tiger details -> Stripes: " + tiger.getNumberOfStripes() + 
+                                                    ", Speed: " + tiger.getSpeed() + 
+                                                    ", Roar Level: " + tiger.getSoundLevelOfRoar());
+                                    break;
+                                case 3: // Display movement
+                                    tiger.walking();
+                                    break;
+                                case 4: // Display eating
+                                    tiger.eatingCompleted();
+                                    break;
+                                default:
+                                    System.out.println("Not supported");
+                            }
+                            System.out.println("Continue with this animal ? (Enter 1 for yes/ 2 for no):");
+                            continueInnerLoop = keyboard.nextInt();
+                        } while(continueInnerLoop == 1);
+                        break;
 
-            switch (animalChoiceMenu(keyboard)) {
+                    case 2:
+                        // Instantiate the Dolphin outside the inner loop
+                        Dolphin dolphin = new Dolphin();
+                        do {
+                            System.out.println("The animal which is chosen is : Dolphin");
+                            menuChoice = animalDetailsManipulationMenu(keyboard, dolphin);
+                            
+                            switch (menuChoice) {
+                                case 1: // Set properties
+                                    keyboard.nextLine(); // Consume the leftover newline character from previous nextInt()
+                                    System.out.print("Enter color: ");
+                                    dolphin.setColor(keyboard.nextLine());
+                                    System.out.print("Enter swimming speed: ");
+                                    dolphin.setSwimmingSpeed(keyboard.nextInt());
+                                    break;
+                                case 2: // Display properties
+                                    System.out.println("Dolphin details -> Color: " + dolphin.getColor() + 
+                                                    ", Swimming Speed: " + dolphin.getSwimmingSpeed());
+                                    break;
+                                case 3: // Display movement
+                                    dolphin.swimming();
+                                    break;
+                                case 4: // Display eating
+                                    dolphin.eatingCompleted();
+                                    break;
+                                default:
+                                    System.out.println("Not supported");
+                            }
+                            System.out.println("Continue with this animal ? (Enter 1 for yes/ 2 for no):");
+                            continueInnerLoop = keyboard.nextInt();
+                        } while(continueInnerLoop == 1);
+                        break;
 
-                case 1:
+                    default:
+                        System.out.println("Sorry no such animal available.");
+                }
 
-                    do {
+                System.out.println("Continue main Zoo menu? (Enter 1 for yes/ 2 for no):");
+                continueOuterLoop = keyboard.nextInt();
 
-                        System.out.println("The animal which is chosen is : ");
-
-                        // get menu choice
-
-                        switch (menuChoice) {
-
-                            case 1:
-
-                                break;
-
-
-
-                            case 2:
-
-                                break;
-
-                            case 3:
-
-                                break;
-
-                            case 4:
-
-                                break;
-
-                            default:
-
-                                System.out.println("Not supported");
-
-
-
-                        }
-
-                        System.out.println("Continue with this animal ? (Enter 1 for yes/ 2 for no):");
-
-                        continueInnerLoop = keyboard.nextInt();
-
-                    } while(continueInnerLoop == 1);
-
-
-
-                    break;
-
-                case 2:
-
-                    do {
-
-                        System.out.println("The animal which is chosen is : ");
-
-                        // get menu choice
-
-                        switch (menuChoice) {
-
-                            case 1:
-
-                                break;
-
-
-
-                            case 2:
-
-                                break;
-
-                            case 3:
-
-                                break;
-
-                            case 4:
-
-                                break;
-
-                            default:
-
-                                System.out.println("Not supported");
-
-
-
-                        }
-
-                        System.out.println("Continue with this animal ? (Enter 1 for yes/ 2 for no):");
-
-                        continueInnerLoop = keyboard.nextInt();
-
-                    } while(continueInnerLoop == 1);
-
-                    break;
-
-
-
-                default:
-
-                    System.out.println("Sorry no such animal available.");
-
-            }
-
-
-
-            System.out.println("Continue main Zoo menu? (Enter 1 for yes/ 2 for no):");
-
-            continueOuterLoop = keyboard.nextInt();
-
-
-
-        } while(continueOuterLoop == 1);
+            } while(continueOuterLoop == 1);
 
         /** TODO 9: create a class "Penguin" from the "Animal" class **/
 
